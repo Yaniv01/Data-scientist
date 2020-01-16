@@ -10,8 +10,14 @@ myhash={}
 myhash=handle1.zip(handle2).to_h
 puts myhash
 
-puts "La crypto ayant la plus grosse valeur est : 
-#{$#{myhash.sort}}"
+myhash.transform_values! {|v|v.delete "$"}
+myhash.transform_values! {|v|v.to_f}
 
+max_key=myhash.key(myhash.values.max)
+max_value=myhash[myhash.key(myhash.values.max)]
+puts "La crypto ayant la plus grosse valeur est : #{max_key} avec #{max_value}$"
 
+min_key=myhash.key(myhash.values.min)
+min_value=myhash[myhash.key(myhash.values.min)]
+puts "La crypto ayant la plus petite valeur est : #{min_key} avec #{min_value}$"
 
